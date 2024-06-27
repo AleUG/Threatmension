@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - "Obst\xE1culo"
+  - Box
   layers:
   - Default
   - TransparentFX

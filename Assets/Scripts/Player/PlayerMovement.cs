@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 targetPosition;  // Posición objetivo a la que el jugador se moverá
     private bool isMoving = false;  // Indicador de si el jugador está moviéndose hacia un objetivo
     private Rigidbody rb;  // Referencia al componente Rigidbody
+    private bool hasClicked = false;  // Indicador de si se ha hecho click y las partículas se han instanciado
 
     private void Start()
     {
@@ -20,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         // Detectar el click izquierdo del ratón
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             // Comprobar si el cursor está sobre un elemento de la UI
             if (EventSystem.current.IsPointerOverGameObject())
@@ -37,10 +39,14 @@ public class PlayerMovement : MonoBehaviour
                 targetPosition.y = transform.position.y;  // Mantener la misma altura del jugador
                 isMoving = true;  // Comenzar movimiento hacia el punto clickeado
 
-                // Instanciar el prefab de partículas en la posición del click con una compensación en Y
-                Vector3 clickPosition = hit.point;
-                clickPosition.y += clickEffectOffset;
-                Instantiate(clickEffectPrefab, clickPosition, Quaternion.identity);
+                // Instanciar el prefab de partículas solo una vez
+                if (!hasClicked)
+                {
+                    Vector3 clickPosition = hit.point;
+                    clickPosition.y += clickEffectOffset;
+                    Instantiate(clickEffectPrefab, clickPosition, Quaternion.identity);
+                    hasClicked = true;  // Marcar que ya se instanciaron las partículas
+                }
             }
         }
 
@@ -55,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = Vector3.zero;
                 isMoving = false;
+                //hasClicked = false;  // Reiniciar para permitir una nueva instancia de partículas en el siguiente click
             }
         }
     }
@@ -63,5 +70,25 @@ public class PlayerMovement : MonoBehaviour
     {
         isMoving = false;  // Detener el movimiento del jugador
         rb.velocity = Vector3.zero;  // Detener el Rigidbody
+    }
+
+    public void ImpulseRotate()
+    {
+        // Congelar el movimiento en el eje Y
+        rb.constraints = RigidbodyConstraints.FreezePositionY;
+
+        rb.AddForce(Vector3.up * 35f, ForceMode.Impulse);
+        //COOLDOWN
+        // Llamar a la corutina para desactivar isKinematic después de 1 segundo
+        StartCoroutine(DisableKinematicAfterDelay(0.35f));
+    }
+
+    private IEnumerator DisableKinematicAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // Restablecer todas las restricciones
+        rb.constraints = RigidbodyConstraints.None;
+
     }
 }
