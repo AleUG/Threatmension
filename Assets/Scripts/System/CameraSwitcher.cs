@@ -1,10 +1,15 @@
 using UnityEngine;
 using Cinemachine;
+using System.Collections;
 
 public class CameraSwitcher : MonoBehaviour
 {
     public CinemachineVirtualCamera[] cameras; // Array para almacenar las Cinemachine Virtual Cameras
     private int currentCameraIndex;
+
+    private bool canSwitch = true; // Variable para controlar el cooldown
+
+    public float switchCooldown = 1.5f; // Duración del cooldown
 
     void Start()
     {
@@ -18,25 +23,44 @@ public class CameraSwitcher : MonoBehaviour
 
     public void SwitchToNextCamera()
     {
-        // Desactiva la cámara actual
-        cameras[currentCameraIndex].Priority = 0;
+        if (canSwitch)
+        {
+            // Desactiva la cámara actual
+            cameras[currentCameraIndex].Priority = 0;
 
-        // Incrementa el índice de la cámara actual y envuélvelo si es necesario
-        currentCameraIndex = (currentCameraIndex + 1) % cameras.Length;
+            // Incrementa el índice de la cámara actual y envuélvelo si es necesario
+            currentCameraIndex = (currentCameraIndex + 1) % cameras.Length;
 
-        // Activa la nueva cámara
-        cameras[currentCameraIndex].Priority = 10;
+            // Activa la nueva cámara
+            cameras[currentCameraIndex].Priority = 10;
+
+            // Inicia el cooldown
+            StartCoroutine(Cooldown());
+        }
     }
 
     public void SwitchToPreviousCamera()
     {
-        // Desactiva la cámara actual
-        cameras[currentCameraIndex].Priority = 0;
+        if (canSwitch)
+        {
+            // Desactiva la cámara actual
+            cameras[currentCameraIndex].Priority = 0;
 
-        // Decrementa el índice de la cámara actual y envuélvelo si es necesario
-        currentCameraIndex = (currentCameraIndex - 1 + cameras.Length) % cameras.Length;
+            // Decrementa el índice de la cámara actual y envuélvelo si es necesario
+            currentCameraIndex = (currentCameraIndex - 1 + cameras.Length) % cameras.Length;
 
-        // Activa la nueva cámara
-        cameras[currentCameraIndex].Priority = 10;
+            // Activa la nueva cámara
+            cameras[currentCameraIndex].Priority = 10;
+
+            // Inicia el cooldown
+            StartCoroutine(Cooldown());
+        }
+    }
+
+    private IEnumerator Cooldown()
+    {
+        canSwitch = false; // Desactiva la capacidad de cambiar de cámara
+        yield return new WaitForSeconds(switchCooldown); // Espera el tiempo del cooldown
+        canSwitch = true; // Reactiva la capacidad de cambiar de cámara
     }
 }

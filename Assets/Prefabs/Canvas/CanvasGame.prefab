@@ -273,6 +273,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  switchCooldown: 0.4
 --- !u!1 &5358710783349342119
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +286,7 @@ GameObject:
   - component: {fileID: 6563151966213769650}
   - component: {fileID: 8602300336142176431}
   - component: {fileID: 6227846612121881497}
+  - component: {fileID: 3019190216905303614}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -375,6 +377,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &3019190216905303614
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5358710783349342119}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5466050253562781339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,6 +1565,11 @@ PrefabInstance:
       propertyPath: botonesCambiarEscena.Array.data[0]
       value: 
       objectReference: {fileID: 3738309000782767673}
+    - target: {fileID: 3720761485884003138, guid: 1651ad7ee5f48f648aaddeec850ea4ca,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
