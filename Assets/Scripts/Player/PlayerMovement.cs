@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = Vector3.zero;
                 isMoving = false;
-                //hasClicked = false;  // Reiniciar para permitir una nueva instancia de partículas en el siguiente click
+                hasClicked = false;  // Reiniciar para permitir una nueva instancia de partículas en el siguiente click
             }
         }
     }
@@ -74,11 +74,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void ImpulseRotate()
     {
-        // Congelar el movimiento en el eje Y
-        rb.constraints = RigidbodyConstraints.FreezePositionY;
+        // Congelar el movimiento en el eje Y manteniendo otras restricciones
+        rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
 
-        rb.AddForce(Vector3.up * 35f, ForceMode.Impulse);
-        //COOLDOWN
+        rb.AddForce(Vector3.up * 50f, ForceMode.Impulse);
+
         // Llamar a la corutina para desactivar isKinematic después de 1 segundo
         StartCoroutine(DisableKinematicAfterDelay(0.35f));
     }
@@ -87,8 +87,8 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        // Restablecer todas las restricciones
-        rb.constraints = RigidbodyConstraints.None;
-
+        // Restablecer las restricciones a solo congelar la posición en Y y mantener otras restricciones necesarias
+        rb.constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezeRotation;
     }
 }
+
