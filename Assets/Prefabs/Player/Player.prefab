@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2298835654246831695}
   - component: {fileID: 5602361157893785717}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: eye_sprite (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 398570850253612293}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.077, y: 0, z: 0}
+  m_LocalPosition: {x: -0.077, y: 0, z: -0.007}
   m_LocalScale: {x: 0.08047897, y: 0.21357213, z: 1.495}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0c3c1c0c4706b9f4a8ec6296060c10ca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,7 +94,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3159989631281135968}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3139924654759172195}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
@@ -161,7 +161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8509077595684249359}
   - component: {fileID: 6414253297454364494}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
@@ -207,7 +207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3949106449930188702}
   - component: {fileID: 2296504042183284752}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: body_sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5fa18afe60723ae4485df23ffb72a198, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 8093356101710769384}
   - component: {fileID: 3198283950695810096}
   - component: {fileID: 3433814808198227951}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -326,7 +326,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6128063805042694824}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 5d19ad8e41ccea54ebab044b2ddb3443, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -451,7 +451,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3836321832661825703}
   - component: {fileID: 2784454669198009719}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: eye_sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ Transform:
   m_GameObject: {fileID: 8100604122343327465}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.074, y: 0, z: 0}
+  m_LocalPosition: {x: 0.074, y: 0, z: -0.007}
   m_LocalScale: {x: 0.08047897, y: 0.21357213, z: 1.495}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -493,7 +493,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0c3c1c0c4706b9f4a8ec6296060c10ca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

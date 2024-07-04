@@ -10,6 +10,8 @@ public class CambiarEscena : MonoBehaviour
     private Animator animator;
     [SerializeField] private AnimationClip animacionFinal;
 
+    private bool timeDelayed = false;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -29,6 +31,11 @@ public class CambiarEscena : MonoBehaviour
 
     public IEnumerator CargarEscenaConTransicion(int index)
     {
+        if (timeDelayed)
+        {
+            yield return new WaitForSeconds(2.0f);
+        }
+
         // Iniciar animación de oscurecimiento
         animator.SetTrigger("Iniciar");
 
@@ -40,5 +47,10 @@ public class CambiarEscena : MonoBehaviour
         {
             SceneManager.LoadScene(nombresEscenas[index]);
         }
+    }
+
+    public void TimeDelayed(bool state)
+    {
+        timeDelayed = state;
     }
 }
