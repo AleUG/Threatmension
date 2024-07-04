@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();  // Obtener el componente Rigidbody
         targetPosition = transform.position;  // Inicialmente, la posición objetivo es la posición actual
+        rb.constraints = RigidbodyConstraints.FreezeRotation;  // Conservar rotación libre pero no mover en Y
     }
 
     private void Update()
@@ -36,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 // Si se hizo click en un lugar válido (que tiene un collider y está en la capa clickableLayer)
                 targetPosition = hit.point;
-                targetPosition.y = transform.position.y;  // Mantener la misma altura del jugador
                 isMoving = true;  // Comenzar movimiento hacia el punto clickeado
 
                 // Instanciar el prefab de partículas solo una vez
@@ -54,12 +54,13 @@ public class PlayerMovement : MonoBehaviour
         if (isMoving)
         {
             Vector3 direction = (targetPosition - transform.position).normalized;
-            rb.velocity = direction * moveSpeed;
+            rb.velocity = new Vector3(direction.x * moveSpeed, rb.velocity.y, direction.z * moveSpeed);
 
             // Detener el movimiento si estamos lo suficientemente cerca del objetivo
-            if (Vector3.Distance(transform.position, targetPosition) <= 0.1f)
+            Vector3 horizontalTargetPosition = new Vector3(targetPosition.x, transform.position.y, targetPosition.z);
+            if (Vector3.Distance(transform.position, horizontalTargetPosition) <= 0.1f)
             {
-                rb.velocity = Vector3.zero;
+                rb.velocity = new Vector3(0, rb.velocity.y, 0);
                 isMoving = false;
                 hasClicked = false;  // Reiniciar para permitir una nueva instancia de partículas en el siguiente click
             }
@@ -69,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
     public void StopMoving()
     {
         isMoving = false;  // Detener el movimiento del jugador
-        rb.velocity = Vector3.zero;  // Detener el Rigidbody
+        rb.velocity = new Vector3(0, rb.velocity.y, 0);  // Detener el Rigidbody
     }
 
     public void ImpulseRotate()
@@ -80,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(Vector3.up * 50f, ForceMode.Impulse);
 
         // Llamar a la corutina para desactivar isKinematic después de 1 segundo
-        StartCoroutine(DisableKinematicAfterDelay(0.35f));
+        StartCoroutine(DisableKinematicAfterDelay(0.15f));
     }
 
     private IEnumerator DisableKinematicAfterDelay(float delay)
@@ -91,4 +92,3 @@ public class PlayerMovement : MonoBehaviour
         rb.constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezeRotation;
     }
 }
-
