@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.Events;
 
 public class PauseManager : MonoBehaviour
@@ -6,6 +7,8 @@ public class PauseManager : MonoBehaviour
     public GameObject pauseCanvas; // Referencia al canvas de pausa
     public GameObject optionsCanvas;
     public bool isPaused = false; // Indica si el juego está pausado
+
+    public float delayTime = 0.5f;
 
     public UnityEvent cursorDesactivar, cursorHabilitar;
 
@@ -40,6 +43,13 @@ public class PauseManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        StartCoroutine(DelayResume());
+    }
+
+    private IEnumerator DelayResume()
+    {
+        yield return new WaitForSecondsRealtime(delayTime);
+
         Time.timeScale = 1f; // Restaurar el timescale a 1 para reanudar el juego
         isPaused = false;
         pauseCanvas.SetActive(false); // Desactivar el canvas de pausa
@@ -47,4 +57,5 @@ public class PauseManager : MonoBehaviour
 
         cursorDesactivar.Invoke();
     }
+
 }

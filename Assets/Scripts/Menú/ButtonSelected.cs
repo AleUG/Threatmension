@@ -9,7 +9,6 @@ public class ButtonSelected : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     // Método llamado cuando el mouse entra en el área del botón
     public void OnPointerEnter(PointerEventData eventData)
     {
-        print("Over");
         animator.SetBool("over", true);
 
     }

@@ -62,8 +62,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = new Vector3(0, rb.velocity.y, 0);
                 isMoving = false;
-                hasClicked = false;  // Reiniciar para permitir una nueva instancia de partículas en el siguiente click
             }
+        }
+
+        if (!Input.GetMouseButton(0))
+        {
+            hasClicked = false;  // Reiniciar para permitir una nueva instancia de partículas en el siguiente click
         }
     }
 
