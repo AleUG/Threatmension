@@ -13,11 +13,14 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;  // Referencia al componente Rigidbody
     private bool hasClicked = false;  // Indicador de si se ha hecho click y las partículas se han instanciado
 
+    private AudioSource audioClick;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();  // Obtener el componente Rigidbody
         targetPosition = transform.position;  // Inicialmente, la posición objetivo es la posición actual
         rb.constraints = RigidbodyConstraints.FreezeRotation;  // Conservar rotación libre pero no mover en Y
+        audioClick = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -46,10 +49,20 @@ public class PlayerMovement : MonoBehaviour
                     clickPosition.y += clickEffectOffset;
                     Instantiate(clickEffectPrefab, clickPosition, Quaternion.identity);
                     hasClicked = true;  // Marcar que ya se instanciaron las partículas
+
+                    audioClick.Play();
                 }
             }
         }
 
+        if (!Input.GetMouseButton(0))
+        {
+            hasClicked = false;  // Reiniciar para permitir una nueva instancia de partículas en el siguiente click
+        }
+    }
+
+    private void FixedUpdate()
+    {
         // Mover al jugador hacia la posición objetivo usando Rigidbody
         if (isMoving)
         {
@@ -63,11 +76,6 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = new Vector3(0, rb.velocity.y, 0);
                 isMoving = false;
             }
-        }
-
-        if (!Input.GetMouseButton(0))
-        {
-            hasClicked = false;  // Reiniciar para permitir una nueva instancia de partículas en el siguiente click
         }
     }
 

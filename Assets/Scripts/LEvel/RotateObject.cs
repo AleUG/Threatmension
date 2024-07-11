@@ -9,10 +9,8 @@ public class RotateObject : MonoBehaviour
     [SerializeField] private float wobbleDuration = 0.25f; // Duración del tambaleo en segundos
     [SerializeField] private float wobbleAmount = 10f; // Cantidad de tambaleo
 
-    void Update()
-    {
-        // Nada en Update, la rotación solo se activará mediante una llamada de función
-    }
+    [SerializeField] private LibreriaDeSonidos libreria;
+    [SerializeField] private AudioSource audioSource;
 
     // Esta función se puede llamar desde otros scripts, botones, etc.
     public void Rotate()
@@ -47,6 +45,8 @@ public class RotateObject : MonoBehaviour
         // Rotación progresiva
         Quaternion startRotation = transform.rotation;
         Quaternion endRotation;
+
+        libreria.PlayRandomAudio(audioSource);
 
         if (isHorizontal)
         {
