@@ -63,7 +63,7 @@ AnimationClip:
         inWeight: {x: 0.32609725, y: 0.32367235, z: 0.32367235}
         outWeight: {x: 0.36010137, y: 0.36389202, z: 0.3525203}
       - serializedVersion: 3
-        time: 0.65
+        time: 0.6666667
         value: {x: 0.22845873, y: 0.22845873, z: 0.22845873}
         inSlope: {x: 0.74831456, y: 0.75231373, z: 0.78000474}
         outSlope: {x: 0.74831456, y: 0.75231373, z: 0.78000474}
@@ -438,7 +438,7 @@ AnimationClip:
         inWeight: 0.32609725
         outWeight: 0.36010137
       - serializedVersion: 3
-        time: 0.65
+        time: 0.6666667
         value: 0.22845873
         inSlope: 0.74831456
         outSlope: 0.74831456
@@ -495,7 +495,7 @@ AnimationClip:
         inWeight: 0.32367235
         outWeight: 0.36389202
       - serializedVersion: 3
-        time: 0.65
+        time: 0.6666667
         value: 0.22845873
         inSlope: 0.75231373
         outSlope: 0.75231373
@@ -552,7 +552,7 @@ AnimationClip:
         inWeight: 0.32367235
         outWeight: 0.3525203
       - serializedVersion: 3
-        time: 0.65
+        time: 0.6666667
         value: 0.22845873
         inSlope: 0.78000474
         outSlope: 0.78000474
@@ -754,4 +754,11 @@ AnimationClip:
     flags: 0
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.083333336
+    functionName: PlayAudio
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

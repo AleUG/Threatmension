@@ -12,10 +12,16 @@ public class RotateObject : MonoBehaviour
     [SerializeField] private LibreriaDeSonidos libreria;
     [SerializeField] private AudioSource audioSource;
 
+    private bool canRotate = false;
+
+    private void Start()
+    {
+        StartCoroutine(EnableThis());
+    }
     // Esta función se puede llamar desde otros scripts, botones, etc.
     public void Rotate()
     {
-        if (!isRotating && !anyIsRotating)
+        if (!isRotating && !anyIsRotating && canRotate)
         {
             StartCoroutine(RotateAndWobble(180, 0, 0, rotationDuration, wobbleDuration));
         }
@@ -23,7 +29,7 @@ public class RotateObject : MonoBehaviour
 
     public void RotateWall()
     {
-        if (!isRotating && !anyIsRotating)
+        if (!isRotating && !anyIsRotating && canRotate)
         {
             StartCoroutine(RotateAndWobble(-90, 0, 0, rotationDuration, wobbleDuration));
         }
@@ -31,7 +37,7 @@ public class RotateObject : MonoBehaviour
 
     public void RotateHorizontal(bool isRight)
     {
-        if (!isRotating && !anyIsRotating)
+        if (!isRotating && !anyIsRotating && canRotate)
         {
             StartCoroutine(RotateAndWobble(0, isRight ? 90 : -90, 0, rotationDuration, wobbleDuration, true));
         }
@@ -84,5 +90,12 @@ public class RotateObject : MonoBehaviour
         transform.rotation = endRotation;
         isRotating = false;
         anyIsRotating = false; // Marcar que ninguna rotación está en progreso
+    }
+
+    private IEnumerator EnableThis()
+    {
+        yield return new WaitForSeconds(1.3f);
+
+        canRotate = true;
     }
 }

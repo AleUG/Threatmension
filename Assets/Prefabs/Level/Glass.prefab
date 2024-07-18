@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7803789656178078753}
   - component: {fileID: 6946340116630396744}
   - component: {fileID: 7855391454993950933}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Glass
   m_TagString: "Obst\xE1culo"
   m_Icon: {fileID: 0}
@@ -121,3 +121,4 @@ MonoBehaviour:
   breakForceThreshold: 1000
   particleBreak: {fileID: 5547490692832284807, guid: 048598e774526ba4c8f9b5dbc00cc52e,
     type: 3}
+  vidrioClip: {fileID: 8300000, guid: f8bff3beca3eadb4a839ed2db81d63c8, type: 3}

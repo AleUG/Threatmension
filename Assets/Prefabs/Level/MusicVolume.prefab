@@ -144,3 +144,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenesToDisableMusic:
   - "Men\xFAPrincipal"
+  - Cinematica_01

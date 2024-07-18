@@ -12,7 +12,7 @@ public class SonidoBoton : MonoBehaviour, IPointerEnterHandler, IPointerClickHan
 
     private AudioSource audioSource;
 
-    private void Start()
+    private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
 

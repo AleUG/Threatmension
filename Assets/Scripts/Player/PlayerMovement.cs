@@ -6,21 +6,26 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;  // Velocidad de movimiento del jugador
     public LayerMask clickableLayer;  // Capas donde se puede hacer click para moverse
+    public LayerMask obstacleLayer; // Capa de obstáculos
+
     public GameObject clickEffectPrefab;  // Prefab de las partículas para indicar el click
     public float clickEffectOffset = 0.1f;  // Compensación en la altura para el prefab de partículas
+
     private Vector3 targetPosition;  // Posición objetivo a la que el jugador se moverá
     private bool isMoving = false;  // Indicador de si el jugador está moviéndose hacia un objetivo
-    private Rigidbody rb;  // Referencia al componente Rigidbody
     private bool hasClicked = false;  // Indicador de si se ha hecho click y las partículas se han instanciado
 
+    private Rigidbody rb;  // Referencia al componente Rigidbody
     private AudioSource audioClick;
+    private Animator animator;
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();  // Obtener el componente Rigidbody
         targetPosition = transform.position;  // Inicialmente, la posición objetivo es la posición actual
         rb.constraints = RigidbodyConstraints.FreezeRotation;  // Conservar rotación libre pero no mover en Y
         audioClick = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -38,19 +43,23 @@ public class PlayerMovement : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, clickableLayer))
             {
-                // Si se hizo click en un lugar válido (que tiene un collider y está en la capa clickableLayer)
-                targetPosition = hit.point;
-                isMoving = true;  // Comenzar movimiento hacia el punto clickeado
-
-                // Instanciar el prefab de partículas solo una vez
-                if (!hasClicked)
+                // Realizar un segundo raycast para verificar obstáculos
+                if (!Physics.Raycast(ray.origin, ray.direction, hit.distance, obstacleLayer))
                 {
-                    Vector3 clickPosition = hit.point;
-                    clickPosition.y += clickEffectOffset;
-                    Instantiate(clickEffectPrefab, clickPosition, Quaternion.identity);
-                    hasClicked = true;  // Marcar que ya se instanciaron las partículas
+                    // Si no hay obstáculos en capas no clickeables, ejecutar la acción
+                    targetPosition = hit.point;
+                    isMoving = true;  // Comenzar movimiento hacia el punto clickeado
 
-                    audioClick.Play();
+                    // Instanciar el prefab de partículas solo una vez
+                    if (!hasClicked)
+                    {
+                        Vector3 clickPosition = hit.point;
+                        clickPosition.y += clickEffectOffset;
+                        Instantiate(clickEffectPrefab, clickPosition, Quaternion.identity);
+                        hasClicked = true;  // Marcar que ya se instanciaron las partículas
+
+                        audioClick.Play();
+                    }
                 }
             }
         }
@@ -69,12 +78,15 @@ public class PlayerMovement : MonoBehaviour
             Vector3 direction = (targetPosition - transform.position).normalized;
             rb.velocity = new Vector3(direction.x * moveSpeed, rb.velocity.y, direction.z * moveSpeed);
 
+            animator.SetBool("Walk", true);
+
             // Detener el movimiento si estamos lo suficientemente cerca del objetivo
             Vector3 horizontalTargetPosition = new Vector3(targetPosition.x, transform.position.y, targetPosition.z);
             if (Vector3.Distance(transform.position, horizontalTargetPosition) <= 0.1f)
             {
                 rb.velocity = new Vector3(0, rb.velocity.y, 0);
                 isMoving = false;
+                animator.SetBool("Walk", false);
             }
         }
     }
@@ -83,6 +95,8 @@ public class PlayerMovement : MonoBehaviour
     {
         isMoving = false;  // Detener el movimiento del jugador
         rb.velocity = new Vector3(0, rb.velocity.y, 0);  // Detener el Rigidbody
+
+        animator.SetBool("Walk", false);
     }
 
     public void ImpulseRotate()

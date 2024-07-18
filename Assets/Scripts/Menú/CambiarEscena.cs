@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class CambiarEscena : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class CambiarEscena : MonoBehaviour
 
     private bool timeDelayed = false;
 
-    private void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
 
@@ -29,11 +30,16 @@ public class CambiarEscena : MonoBehaviour
         StartCoroutine(CargarEscenaConTransicion(index)); // Inicia la corutina para cargar la escena con transición
     }
 
+    public void CambiarEscenaName(string name)
+    {
+        StartCoroutine(CargarEscenaTransicion(name)); // Inicia la corutina para cargar la escena con transición
+    }
+
     public IEnumerator CargarEscenaConTransicion(int index)
     {
         if (timeDelayed)
         {
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(2.35f);
         }
 
         // Iniciar animación de oscurecimiento
@@ -47,6 +53,22 @@ public class CambiarEscena : MonoBehaviour
         {
             SceneManager.LoadScene(nombresEscenas[index]);
         }
+    }
+
+    public IEnumerator CargarEscenaTransicion(string name)
+    {
+        if (timeDelayed)
+        {
+            yield return new WaitForSeconds(2.35f);
+        }
+
+        // Iniciar animación de oscurecimiento
+        animator.SetTrigger("Iniciar");
+
+        // Esperar un breve momento para que la animación de oscurecimiento se complete
+        yield return new WaitForSeconds(animacionFinal.length);
+
+        SceneManager.LoadScene(name);
     }
 
     public void TimeDelayed(bool state)

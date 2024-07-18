@@ -14,22 +14,7 @@ public class PauseManager : MonoBehaviour
 
     private void Start()
     {
-        ResumeGame(); // Inicia el juego sin pausa
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (isPaused)
-            {
-                ResumeGame(); // Si el juego ya está pausado, resumirlo
-            }
-            else
-            {
-                PauseGame(); // Si el juego no está pausado, pausarlo
-            }
-        }
+        ResumeGame(delayTime); // Inicia el juego sin pausa
     }
 
     public void PauseGame()
@@ -41,12 +26,12 @@ public class PauseManager : MonoBehaviour
         cursorHabilitar.Invoke();
     }
 
-    public void ResumeGame()
+    public void ResumeGame(float delay)
     {
-        StartCoroutine(DelayResume());
+        StartCoroutine(DelayResume(delay));
     }
 
-    private IEnumerator DelayResume()
+    private IEnumerator DelayResume(float delayTime)
     {
         yield return new WaitForSecondsRealtime(delayTime);
 

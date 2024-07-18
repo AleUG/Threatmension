@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6291065582550627591}
   - component: {fileID: 90902542984608047}
   - component: {fileID: 3637687892923975448}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 6684427110390384205}
   - component: {fileID: 3743219185528493838}
   - component: {fileID: 1081935059911773367}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Press
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 2205630017718223055}
   - component: {fileID: 1547911086319601623}
   - component: {fileID: 5396494329631923307}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ButtonRotate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5906436090281235333}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}

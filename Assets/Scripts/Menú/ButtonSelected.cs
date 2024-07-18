@@ -9,14 +9,18 @@ public class ButtonSelected : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     // Método llamado cuando el mouse entra en el área del botón
     public void OnPointerEnter(PointerEventData eventData)
     {
-        animator.SetBool("over", true);
-
+        if (!animator.GetBool("over"))
+        {
+            animator.SetBool("over", true);
+        }
     }
 
     // Método llamado cuando el mouse sale del área del botón
     public void OnPointerExit(PointerEventData eventData)
     {
-        // Ocultar el Image del ícono
-        animator.SetBool("over", false);
+        if (animator.GetBool("over"))
+        {
+            animator.SetBool("over", false);
+        }
     }
 }
