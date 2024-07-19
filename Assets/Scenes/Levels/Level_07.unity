@@ -2774,6 +2774,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5396494329631923307, guid: 9f811f8ae1eae7a4f960b2557092ffaa,
         type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396494329631923307, guid: 9f811f8ae1eae7a4f960b2557092ffaa,
+        type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396494329631923307, guid: 9f811f8ae1eae7a4f960b2557092ffaa,
+        type: 3}
       propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1753496215}
@@ -2782,6 +2792,16 @@ PrefabInstance:
       propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1631761801}
+    - target: {fileID: 5396494329631923307, guid: 9f811f8ae1eae7a4f960b2557092ffaa,
+        type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 16282121}
+    - target: {fileID: 5396494329631923307, guid: 9f811f8ae1eae7a4f960b2557092ffaa,
+        type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5396494329631923307, guid: 9f811f8ae1eae7a4f960b2557092ffaa,
         type: 3}
       propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -2794,6 +2814,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5396494329631923307, guid: 9f811f8ae1eae7a4f960b2557092ffaa,
         type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396494329631923307, guid: 9f811f8ae1eae7a4f960b2557092ffaa,
+        type: 3}
       propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: RotateObject, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -2801,6 +2826,21 @@ PrefabInstance:
         type: 3}
       propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: PlayerMovement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396494329631923307, guid: 9f811f8ae1eae7a4f960b2557092ffaa,
+        type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396494329631923307, guid: 9f811f8ae1eae7a4f960b2557092ffaa,
+        type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_StringArgument
+      value: icon_rotateFront
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396494329631923307, guid: 9f811f8ae1eae7a4f960b2557092ffaa,
+        type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6521277673968043546, guid: 9f811f8ae1eae7a4f960b2557092ffaa,
         type: 3}

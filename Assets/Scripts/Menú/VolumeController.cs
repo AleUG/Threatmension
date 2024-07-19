@@ -12,6 +12,11 @@ public class VolumeController : MonoBehaviour
     [SerializeField] private AudioMixer myMixer;
     [SerializeField] public GameObject canvasOptions;
 
+    public delegate void MusicVolumeChanged(float volume);
+    public event MusicVolumeChanged OnMusicVolumeChanged;
+
+    public float MusicVolume => musicSlider.value;
+
     private void Start()
     {
         canvasOptions.SetActive(false);
@@ -33,6 +38,7 @@ public class VolumeController : MonoBehaviour
         float volume = musicSlider.value;
         myMixer.SetFloat("music", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("musicVolume", volume);
+        OnMusicVolumeChanged?.Invoke(volume);
     }
 
     public void SetSFXVolume()

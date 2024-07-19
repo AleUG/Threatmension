@@ -43,7 +43,7 @@ public class ActivarCanvas : MonoBehaviour
         float animationLength = stateInfo.length;
 
         // Espera la duración de la animación
-        yield return new WaitForSeconds(animationLength);
+        yield return new WaitForSecondsRealtime(animationLength);
 
         // Desactiva el canvas
         canvas.SetActive(false);

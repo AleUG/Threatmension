@@ -70,9 +70,5 @@ public class SonidoBoton : MonoBehaviour, IPointerEnterHandler, IPointerClickHan
     public void ReproducirSonidoPresion(int index)
     {
         audioSource.PlayOneShot(sonidoPresion);
-
-        // Ejecutar la acción correspondiente al botón presionado
-        // Aquí puedes agregar tu lógica personalizada según el botón seleccionado
-        Debug.Log("Botón " + index + " presionado");
     }
 }
