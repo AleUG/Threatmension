@@ -4,8 +4,15 @@ using UnityEngine.EventSystems;
 
 public class ButtonSelected : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private Animator animator;
+    private Animator animator;
 
+    private void Awake()
+    {
+        if (transform.parent != null)
+        {
+            animator = transform.parent.GetComponent<Animator>();
+        }
+    }
     // Método llamado cuando el mouse entra en el área del botón
     public void OnPointerEnter(PointerEventData eventData)
     {

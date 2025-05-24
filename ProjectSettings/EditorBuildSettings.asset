@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: "Assets/Scenes/Men\xFAPrincipal.unity"
     guid: f5245814d2c740c4eaa22988030046a1
   - enabled: 1
-    path: Assets/Scenes/Cinematica_01.unity
+    path: Assets/Scenes/Cinematics/Cinematica_01.unity
     guid: 90cbc8484c636ec4e823483ea389b692
   - enabled: 1
     path: Assets/Scenes/Levels/Level_01.unity
@@ -42,6 +42,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Level_10.unity
     guid: 58cf30419f4fdec4ba4518d3bb76e125
   - enabled: 1
-    path: Assets/Scenes/Cinematica_02.unity
+    path: Assets/Scenes/Cinematics/Cinematica_02.unity
     guid: 6c4acdf811b3e8b4480cd91d7d0887e7
   m_configObjects: {}
